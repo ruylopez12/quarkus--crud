@@ -1,7 +1,6 @@
 package com.quarkus.example.entity;
 
 import io.quarkus.elytron.security.common.BcryptUtil;
-import io.quarkus.security.jpa.Roles;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +27,6 @@ public class User {
     private String password;
 
     @Column(name = "role", nullable = false)
-    @Roles
     private String role;
 
     @Column(name = "first_name", nullable = false)
