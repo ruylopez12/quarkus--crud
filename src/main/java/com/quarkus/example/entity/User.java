@@ -1,11 +1,7 @@
 package com.quarkus.example.entity;
 
 import io.quarkus.elytron.security.common.BcryptUtil;
-import io.quarkus.security.jpa.Password;
 import io.quarkus.security.jpa.Roles;
-import io.quarkus.security.jpa.UserDefinition;
-import io.quarkus.security.jpa.Username;
-import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,11 +13,8 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-import java.util.Locale;
-
 @Entity
 @Table(name = "user")
-@UserDefinition
 public class User {
 
     @Id
@@ -29,12 +22,9 @@ public class User {
     private long id;
 
     @Column(name = "username", nullable = false)
-    @Username
     private String username;
 
     @Column(name = "password", nullable = false)
-    @Password
-    @JsonbTransient
     private String password;
 
     @Column(name = "role", nullable = false)
