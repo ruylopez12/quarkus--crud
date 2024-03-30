@@ -17,9 +17,8 @@ import org.eclipse.microprofile.jwt.Claims;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @ApplicationScoped
 public class DefaultUserService implements UserService {
@@ -75,8 +74,7 @@ public class DefaultUserService implements UserService {
             String pass=userList.get(0).getPassword();
             if(BcryptUtil.matches(password,pass)){
                 String token = Jwt.issuer("user")
-                        .upn("user")
-                        .groups(new HashSet<>(Arrays.asList(role)))
+                        .groups(Set.of(role))
                         .claim(Claims.email,name)
                         .sign();
                 return token;
